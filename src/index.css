@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-orange {
+  @apply btn bg-[#FF3811] hover:bg-white hover:text-black border-none hover:border-black
+}
