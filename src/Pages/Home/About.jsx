@@ -1,10 +1,10 @@
 import React from "react";
-import img1 from "../assets/images/about_us/person.jpg";
-import img2 from "../assets/images/about_us/parts.jpg";
+import img1 from "../../assets/images/about_us/person.jpg";
+import img2 from "../../assets/images/about_us/parts.jpg";
 
 const About = () => {
   return (
-    <div>
+    <div id="about">
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row lg:gap-10  justify-center">
           <div className="lg:w-1/2 relative">
@@ -19,7 +19,7 @@ const About = () => {
             />
           </div>
           <div className=" lg:w-1/2 space-y-5">
-            <h3 className="text-[#FF3811] font-bold"> About </h3>
+            <h3 className="text-primary font-bold"> About </h3>
             <h1 className="text-5xl font-bold">
               We are qualified & of experience in this field
             </h1>

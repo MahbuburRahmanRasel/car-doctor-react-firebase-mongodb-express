@@ -1,8 +1,8 @@
 import React from "react";
-import img1 from "../../assets/images/homeCarousel/1.jpg";
-import img2 from "../../assets/images/homeCarousel/2.jpg";
-import img3 from "../../assets/images/homeCarousel/3.jpg";
-import img4 from "../../assets/images/homeCarousel/4.jpg";
+import img1 from "../../../assets/images/homeCarousel/1.jpg";
+import img2 from "../../../assets/images/homeCarousel/2.jpg";
+import img3 from "../../../assets/images/homeCarousel/3.jpg";
+import img4 from "../../../assets/images/homeCarousel/4.jpg";
 
 const Banner = () => {
 

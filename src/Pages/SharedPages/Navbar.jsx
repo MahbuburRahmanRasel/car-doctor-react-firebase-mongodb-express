@@ -5,8 +5,13 @@ import logo from '../../assets/logo.svg'
 const Navbar = () => {
 
     const navitems = <>
-        <li><a > Home</a></li>
-        <li><a > About</a></li>
+      
+        <div className="space-x-5">
+        <Link to="/"> Home </Link>
+        <Link  to="#about"> About </Link>
+        <Link to="/login"> Login </Link>
+        <Link to="/signup"> SignUp </Link>
+        </div>
       
     
     </>
@@ -35,7 +40,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
             >
               {navitems}
             </ul>
@@ -47,12 +52,12 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="">
             {navitems}
           </ul>
         </div>
         <div className="navbar-end">
-        <button className="btn  btn-outline btn-warning">Appointment</button>
+        <button className="btn  btn-outline btn-orange">Appointment</button>
 
         </div>
       </div>

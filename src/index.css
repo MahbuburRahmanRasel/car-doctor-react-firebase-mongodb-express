@@ -3,5 +3,10 @@
 @tailwind utilities;
 
 .btn-orange {
-  @apply btn bg-[#FF3811] hover:bg-white hover:text-black border-none hover:border-black
+  @apply btn bg-[#FF3811] hover:bg-white hover:text-[#FF3811]  hover:border-[#FF3811] hover:border
+}
+
+
+.text-primary {
+  @apply text-[#FF3811]
 }
