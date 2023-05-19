@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import login from "../../assets/images/login/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
 
+const {loginUser}= useContext(AuthContext);
+const location = useLocation()
+const navigate = useNavigate()
+const from = location.state?.from?.pathname || '/';
+
+
 const handleLogin = (event)=>{
     event.preventDefault();
-    const form = event.form
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    loginUser(email,password)
+    .then(result =>{
+      const user = result.user;
+      
+      navigate(from, { replace: true });
+      
+
+    })
+    .catch(error =>{
+      console.log(error);
+    })
     
 
 
@@ -64,6 +87,7 @@ const handleLogin = (event)=>{
                 </div>
               </form>
               <p>New to Car Doctors <Link to="/signup" className="text-primary font-bold">Sign Up</Link></p>
+            <SocialLogin />
             </div>
           </div>
         </div>

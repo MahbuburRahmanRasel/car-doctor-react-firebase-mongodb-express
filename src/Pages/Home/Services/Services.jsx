@@ -1,9 +1,19 @@
-import React from 'react';
-import services from '../../../../public/car-doctor-resources/services.json'
+import React, { useEffect, useState } from 'react';
+// import services from '../../../../public/car-doctor-resources/services.json'
 import Service from './Service';
 
 const Services = () => {
 
+    const [services, setServices] = useState([])
+
+    useEffect(()=>{
+
+        fetch('http://localhost:5000/services')
+        .then(res=> res.json())
+        .then(data=> setServices(data))
+
+
+    },[])
     
 
     return (

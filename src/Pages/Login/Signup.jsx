@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import login from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Signup = () => {
 
-const handleLogin = (event)=>{
+const {registerUser}= useContext(AuthContext);
+
+
+
+
+const handleSignup = (event)=>{
     event.preventDefault();
-    const form = event.ta
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name,email,password);
+
+    registerUser(email,password)
+    .then(result =>{
+      const user = result.user;
+      console.log(user);
+    })
+    .catch(error =>{
+      console.log(error);
+    })
 
 
 }
-
-
-
-
 
 
   return (
@@ -26,7 +41,7 @@ const handleLogin = (event)=>{
           <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100 lg:w-1/2">
             <h1 className="text-center font-bold text-4xl my-5">SignUp</h1>
             <div className="card-body">
-              <form onSubmit={handleLogin}>
+              <form onSubmit={handleSignup}>
               <div className="form-control">
                   <label className="label">
                     <span className="label-text">Name</span>
@@ -35,6 +50,7 @@ const handleLogin = (event)=>{
                     type="text"
                     placeholder="name"
                     className="input input-bordered"
+                    name="name"
                   />
                 </div>
                 <div className="form-control">
@@ -45,6 +61,7 @@ const handleLogin = (event)=>{
                     type="text"
                     placeholder="email"
                     className="input input-bordered"
+                    name="email"
                   />
                 </div>
                 <div className="form-control">
@@ -55,6 +72,7 @@ const handleLogin = (event)=>{
                     type="text"
                     placeholder="password"
                     className="input input-bordered"
+                    name="password"
                   />
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover">
@@ -65,7 +83,7 @@ const handleLogin = (event)=>{
                 <div className="form-control mt-6">
                   <input
                     type="submit"
-                    value="Login"
+                    value="SignUp"
                     className="btn btn-orange"
                   />
                 </div>

@@ -18,19 +18,23 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
 
   //registation
   const registerUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //login
   const loginUser = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   //logout
   const logOut = () => {
+    setLoading(true)
     return signOut(auth);
   };
 
@@ -40,18 +44,24 @@ const AuthProvider = ({ children }) => {
   //github signup
   const githubProvider = new GithubAuthProvider();
 
+  //Observer the current user 
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
       setUser(loggedInUser);
+      setLoading(false);
     });
     return () => {
       unSubscribe();
     };
   }, []);
 
+
+
   const authInfo = {
     registerUser,
     user,
+    loading,
     logOut,
     loginUser,
     googleProvider,

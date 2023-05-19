@@ -1,21 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import logo from '../../assets/logo.svg'
+import logo from "../../assets/logo.svg";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result);
+       
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    const navitems = <>
-      
-        <div className="space-x-5">
+  const navitems = (
+    <>
+      <div className="space-x-5">
         <Link to="/"> Home </Link>
-        <Link  to="#about"> About </Link>
-        <Link to="/login"> Login </Link>
-        <Link to="/signup"> SignUp </Link>
-        </div>
-      
-    
-    </>
+        <Link to="#about"> About </Link>
 
+        <Link to="/signup"> SignUp </Link>
+        {user?.email ? (
+          <>
+            <Link to="/bookings"> Bookings </Link>
+            <Link onClick={handleLogOut}> Logout </Link>
+          </>
+        ) : (
+          <Link to="/login"> Login </Link>
+        )}
+      </div>
+    </>
+  );
 
   return (
     <div>
@@ -46,19 +64,14 @@ const Navbar = () => {
             </ul>
           </div>
           <Link className="">
-            <img src= {logo} alt="" />
-
-
+            <img src={logo} alt="" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="">
-            {navitems}
-          </ul>
+          <ul className="">{navitems}</ul>
         </div>
         <div className="navbar-end">
-        <button className="btn  btn-outline btn-orange">Appointment</button>
-
+          <button className="btn  btn-outline btn-orange">Appointment</button>
         </div>
       </div>
     </div>
